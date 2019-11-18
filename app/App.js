@@ -11,9 +11,8 @@ export default class App extends React.Component {
     state = {
         hasCameraPermission: null,
         type: Camera.Constants.Type.front,
-        isLeftEyeOpen: null,
-        isRightEyeOpen: null,
-        faces: null
+        isLeftEyeOpen: false,
+        isRightEyeOpen: false,
     };
 
     async componentDidMount() {
@@ -23,22 +22,28 @@ export default class App extends React.Component {
 
     handleFaces = (result) => {
         let face = result.faces[0]
-        if(result.faces.length) {
-            if(!Math.floor(face.leftEyeOpenProbability * 10)) {
-                this.setState({isLeftEyeOpen: false})
+
+        clearTimeout(this.timeout)
+
+        this.timeout = setTimeout(() => {
+            if(result.faces.length) {
+                if(!Math.floor(face.leftEyeOpenProbability * 10)) {
+                    this.setState({isLeftEyeOpen: false})
+                } else {
+                    this.setState({isLeftEyeOpen: true})
+                }
+                if(!Math.floor(face.rightEyeOpenProbability * 10)) {
+                    this.setState({isRightEyeOpen: false})
+                } else {
+                    this.setState({isRightEyeOpen: true})
+                }
             } else {
-                this.setState({isLeftEyeOpen: true})
+                this.setState({isRightEyeOpen: false, isLeftEyeOpen: false})
             }
-            if(!Math.floor(face.rightEyeOpenProbability * 10)) {
-                this.setState({isRightEyeOpen: false})
-            } else {
-                this.setState({isRightEyeOpen: true})
-            }
-        } else {
-            this.setState({isRightEyeOpen: true, isLeftEyeOpen: false })
-        }
+        }, 800)
 
     }
+
     render() {
         const { hasCameraPermission } = this.state;
         if (hasCameraPermission === null) {
