@@ -61,56 +61,62 @@ export default class AppCamera extends React.Component {
                 this.setState({leftEyeStates: []})
             }
 
+            let initialRightEyeState, lastRightEyeState, rightEyeState
+            let initialLeftEyeState, lastLeftEyeState, leftEyeState
+    
+            initialRightEyeState = rightEyeStates[0]
+            lastRightEyeState = rightEyeStates[1]
+            rightEyeState = rightEyeStates[2]
+            
+            initialLeftEyeState = leftEyeStates[0]
+            lastLeftEyeState = leftEyeStates[1]
+            leftEyeState = leftEyeStates[2]
+    
+
+            if(rightEyeStates.length === 3 && leftEyeStates.length === 3) {
+
+                if((initialRightEyeState && !lastRightEyeState && rightEyeState) && (initialLeftEyeState && !lastLeftEyeState && leftEyeState)) {
+                    this.props.blinkAction()
+                }
+
+            } 
+            
             if(rightEyeStates.length === 3) {
-                let initialRightEyeState, lastRightEyeState, rightEyeState
-
-                initialRightEyeState = rightEyeStates[0]
-                lastRightEyeState = rightEyeStates[1]
-                rightEyeState = rightEyeStates[2]
-
-
-                if(initialRightEyeState && !lastRightEyeState && rightEyeState) {
-                    this.props.rightAction()
+                   
+                    if(initialRightEyeState && !lastRightEyeState && rightEyeState) {
+                        this.props.rightAction()
+                    }
+                } 
+                
+                if(leftEyeStates.length === 3) {
+                    
+    
+                    if(initialLeftEyeState && !lastLeftEyeState && leftEyeState) {
+                        this.props.leftAction()
+                    }
                 }
+            } else {
+                this.setState({rightEyeStates: [], leftEyeStates: []})
             }
-
-            if(leftEyeStates.length === 3) {
-                let initialLeftEyeState, lastLeftEyeState, leftEyeState
-
-                initialLeftEyeState = leftEyeStates[0]
-                lastLeftEyeState = leftEyeStates[1]
-                leftEyeState = leftEyeStates[2]
-
-
-                if(initialLeftEyeState && !lastLeftEyeState && leftEyeState) {
-                    this.props.leftAction()
-                }
-            }
-
-        }
-        else {
-            this.setState({rightEyeStates: [], leftEyeStates: []})
-        }
     }
 
 
     render() {
         const {hasCameraPermission} = this.state
         if (hasCameraPermission === null) {
-            return <View/>
+            return <View style={{backgroundColor: 'blue'}}/>
         } else if (hasCameraPermission === false) {
             return <Text>No access to camera</Text>
         } else {
             return (
                 <View style={{width: width, height: height, textAlign: 'center'}}>
-                    <Camera style={{flex: 1, height: 0, width: 0}}
-                            minDetectionInterval={1000}
+                    <Camera style={{flex: 1, height: height, width: width}}
                             onFacesDetected={(faces) => this.handleFaces(faces)}
                             faceDetectorSettings={{
                                 mode: FaceDetector.Constants.Mode.accurate,
                                 detectLandmarks: FaceDetector.Constants.Landmarks.none,
                                 runClassifications: FaceDetector.Constants.Classifications.all,
-                                minDetectionInterval: 100,
+                                minDetectionInterval: 1000,
                                 tracking: true,
                             }}
                             type={this.state.type}>

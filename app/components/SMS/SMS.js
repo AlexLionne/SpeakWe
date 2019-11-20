@@ -17,11 +17,9 @@ export default class SMS extends React.Component {
     render() {
       return (
           <AppCamera
-              rightAction={() => this.props.jumpTo('second')}
+              blinkAction={() => {console.log('both')}}
           >
-              <View style={{width: width, height: height, justifyContent: 'center', display: 'flex'}}>
-                  <Text style={{textAlign: 'center'}}>SMS</Text>
-              </View>
+              
           </AppCamera>
       )
     }
