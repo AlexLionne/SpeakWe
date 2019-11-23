@@ -18,8 +18,9 @@ export default class SMS extends React.Component {
       return (
           <AppCamera
               blinkAction={() => {console.log('both')}}
+              rightAction={() => {console.log('right')}}
+              leftAction={() => {console.log('left')}}
           >
-              
           </AppCamera>
       )
     }

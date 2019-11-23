@@ -14,7 +14,11 @@ export default class EMAIL extends React.Component {
     }
     render() {
         return (
-            <AppCamera blinkAction={() => {console.log('both')}} >
+            <AppCamera
+                blinkAction={() => {console.log('both')}}
+                leftAction={() => {console.log('left')}}
+                rightAction={() => {console.log('right')}}
+            >
                 <View style={{width: width, height: height, justifyContent: 'center', display: 'flex'}}>
                     <Text style={{textAlign: 'center'}}>EMAIL</Text>
                 </View>
