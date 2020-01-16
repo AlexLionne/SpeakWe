@@ -74,7 +74,6 @@ export default class AppCamera extends React.Component {
     
 
             if(rightEyeStates.length === 3 && leftEyeStates.length === 3) {
-
                 if((initialRightEyeState && !lastRightEyeState && rightEyeState) && (initialLeftEyeState && !lastLeftEyeState && leftEyeState)) {
                     this.props.blinkAction()
                 }
@@ -82,15 +81,12 @@ export default class AppCamera extends React.Component {
             } 
             
             if(rightEyeStates.length === 3) {
-                   
                     if(initialRightEyeState && !lastRightEyeState && rightEyeState) {
                         this.props.rightAction()
                     }
                 } 
                 
                 if(leftEyeStates.length === 3) {
-                    
-    
                     if(initialLeftEyeState && !lastLeftEyeState && leftEyeState) {
                         this.props.leftAction()
                     }
@@ -109,8 +105,8 @@ export default class AppCamera extends React.Component {
             return <Text>No access to camera</Text>
         } else {
             return (
-                <View style={{width: width, height: height, textAlign: 'center'}}>
-                    <Camera style={{flex: 1, height: height, width: width}}
+                <View style={{width: width, height: height - 2050, textAlign: 'center'}}>
+                    <Camera style={{flex: 1, height: height - 2050, width: width - 2050}}
                             onFacesDetected={(faces) => this.handleFaces(faces)}
                             faceDetectorSettings={{
                                 mode: FaceDetector.Constants.Mode.accurate,

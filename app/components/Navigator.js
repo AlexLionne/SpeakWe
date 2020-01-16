@@ -13,7 +13,7 @@ export default class Navigator extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            index: 0,
+            index: 1,
             routes: [
                 { key: 'first', icon: 'md-text'},
                 { key: 'second', icon: 'md-mail'},
