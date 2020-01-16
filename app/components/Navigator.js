@@ -4,8 +4,6 @@ import EMAIL from "./Email/Email";
 import {TabView, TabBar} from "react-native-tab-view"
 import { Ionicons } from '@expo/vector-icons'
 import  {Dimensions } from 'react-native'
-import AppCamera from "./Camera/AppCamera";
-
 
 
 export default class Navigator extends React.Component {

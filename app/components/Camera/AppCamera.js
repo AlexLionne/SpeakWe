@@ -63,30 +63,39 @@ export default class AppCamera extends React.Component {
 
             let initialRightEyeState, lastRightEyeState, rightEyeState
             let initialLeftEyeState, lastLeftEyeState, leftEyeState
-    
+
             initialRightEyeState = rightEyeStates[0]
             lastRightEyeState = rightEyeStates[1]
             rightEyeState = rightEyeStates[2]
-            
+
             initialLeftEyeState = leftEyeStates[0]
             lastLeftEyeState = leftEyeStates[1]
             leftEyeState = leftEyeStates[2]
-    
+
 
             if(rightEyeStates.length === 3 && leftEyeStates.length === 3) {
                 if((initialRightEyeState && !lastRightEyeState && rightEyeState) && (initialLeftEyeState && !lastLeftEyeState && leftEyeState)) {
                     this.props.blinkAction()
                 }
+                return
+            }
 
-            } 
-            
             if(rightEyeStates.length === 3) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
                     if(initialRightEyeState && !lastRightEyeState && rightEyeState) {
                         this.props.rightAction()
                     }
-                } 
-                
+                }
+
                 if(leftEyeStates.length === 3) {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/origin/master
                     if(initialLeftEyeState && !lastLeftEyeState && leftEyeState) {
                         this.props.leftAction()
                     }
@@ -105,14 +114,19 @@ export default class AppCamera extends React.Component {
             return <Text>No access to camera</Text>
         } else {
             return (
+<<<<<<< HEAD
                 <View style={{width: width, height: height - 2050, textAlign: 'center'}}>
                     <Camera style={{flex: 1, height: height - 2050, width: width - 2050}}
+=======
+                <View style={{width: 100, height: 100, textAlign: 'center'}}>
+                    <Camera style={{flex: 1, height: 100, width: 100}}
+>>>>>>> refs/remotes/origin/master
                             onFacesDetected={(faces) => this.handleFaces(faces)}
                             faceDetectorSettings={{
                                 mode: FaceDetector.Constants.Mode.accurate,
-                                detectLandmarks: FaceDetector.Constants.Landmarks.none,
+                                detectLandmarks: FaceDetector.Constants.Landmarks.all,
                                 runClassifications: FaceDetector.Constants.Classifications.all,
-                                minDetectionInterval: 1000,
+                                minDetectionInterval: 1500,
                                 tracking: true,
                             }}
                             type={this.state.type}>

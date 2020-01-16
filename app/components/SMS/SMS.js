@@ -17,11 +17,16 @@ export default class SMS extends React.Component {
     render() {
       return (
           <AppCamera
+<<<<<<< HEAD
           blinkAction={() => {console.log('both')}}
           rightAction={() => {console.log('right')}}
           leftAction={() => {console.log('left')}}
+=======
+              blinkAction={() => {console.log('both')}}
+              rightAction={() => {console.log('right')}}
+              leftAction={() => {console.log('left')}}
+>>>>>>> refs/remotes/origin/master
           >
-              
           </AppCamera>
       )
     }
