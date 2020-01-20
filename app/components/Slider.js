@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Button, Alert } from 'react-native';
 
 const {width, height} = Dimensions.get('window')
 
@@ -9,7 +9,8 @@ export default class Slider extends React.Component {
         this.state = {
             currentLetter: 'e',
             currentIndex: 1,
-            currentWord: ''
+            currentWord: '',
+            diner: ''
         }
         this.alphabet = [...'esarintulomdpcfbvhjqzyxkw'];
     }
@@ -40,31 +41,47 @@ export default class Slider extends React.Component {
     renderWord = (currentLetter) => {
         let currentWord = this.state.currentWord
         currentWord += currentLetter
-        console.log(currentWord)
         this.setState({currentWord})
-        console.log(this.state.currentIndex)
         this.setState({ currentIndex: 0 })
+        console.log(currentWord)
     }
 
+    cleanWord = () => {
+        this.setState({diner : this.state.diner = 'diner'})
+        // this.setState({currentWord : this.state.currentWord = ''})
+    }
+    mom = () => {
+        this.setState({currentWord : this.state.currentWord = 'diner'})
+        this.setState({diner : this.state.diner = ''})
+    }
+    
     render () {
         return (
             <View 
             style={Style.container}
             >
-              <View>
+                <Button
+                    title='Clear screen'
+                    color='black'
+                    onPress={() => this.cleanWord(this.state.diner)}
+                />
                 <Text 
-                style={{marginTop: 100, color: 'white', fontSize: 200, fontWeight: 'bold', position: 'relative'}}
-                onPress={() => this.renderWord(this.state.currentLetter)}
-                >
-                  {this.state.currentLetter}
+                    style={{color: 'white', fontSize: 200, fontWeight: 'bold'}}
+                    onPress={() => this.renderWord(this.state.currentLetter)}
+                    >
+                    {this.state.currentLetter}
                 </Text>
-            </View>
-                <TextInput
-                style={{color: 'white', position: 'absolute'}}
-                >
+                <Text
+                    style={{color: 'white', fontSize: 60}}
+                    >
                     {this.state.currentWord}
-                </TextInput>
-              {/* <View style={{flexDirection: 'row', position: 'absolute', marginHorizontal: 24, bottom: 100}}>{this.renderLetters()}</View> */}
+                </Text>
+                <Text
+                    style={{color: 'white', fontSize: 55, fontStyle: 'italic'}}
+                    onPress={() => this.mom(this.state.currentWord)}
+                >
+                    {this.state.diner}
+                </Text>
             </View>
         );
     }
@@ -73,10 +90,12 @@ export default class Slider extends React.Component {
 const Style = StyleSheet.create ({
     container: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
+        alignItems: 'center',
         justifyContent: 'center',
         width: width,
         height: height,
         backgroundColor: '#309383',
     },
+
 });
