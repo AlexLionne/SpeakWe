@@ -9,8 +9,7 @@ export default class Slider extends React.Component {
         this.state = {
             currentLetter: 'e',
             currentIndex: 1,
-            currentWord: '',
-            diner: ''
+            currentWord: ''
         }
         this.alphabet = [...'esarintulomdpcfbvhjqzyxkw'];
     }
@@ -47,14 +46,9 @@ export default class Slider extends React.Component {
     }
 
     cleanWord = () => {
-        this.setState({diner : this.state.diner = 'diner'})
-        // this.setState({currentWord : this.state.currentWord = ''})
+        this.setState({currentWord : this.state.currentWord = ''})
     }
-    mom = () => {
-        this.setState({currentWord : this.state.currentWord = 'diner'})
-        this.setState({diner : this.state.diner = ''})
-    }
-    
+
     render () {
         return (
             <View 
@@ -63,24 +57,18 @@ export default class Slider extends React.Component {
                 <Button
                     title='Clear screen'
                     color='black'
-                    onPress={() => this.cleanWord(this.state.diner)}
+                    onPress={() => this.cleanWord(this.state.currentWord)}
                 />
                 <Text 
                     style={{color: 'white', fontSize: 200, fontWeight: 'bold'}}
                     onPress={() => this.renderWord(this.state.currentLetter)}
-                    >
+                >
                     {this.state.currentLetter}
                 </Text>
                 <Text
                     style={{color: 'white', fontSize: 60}}
-                    >
-                    {this.state.currentWord}
-                </Text>
-                <Text
-                    style={{color: 'white', fontSize: 55, fontStyle: 'italic'}}
-                    onPress={() => this.mom(this.state.currentWord)}
                 >
-                    {this.state.diner}
+                    {this.state.currentWord}
                 </Text>
             </View>
         );

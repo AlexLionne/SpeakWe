@@ -26,4 +26,4 @@ export default class EMAIL extends React.Component {
             </AppCamera>
         )
     }
-}
+} 
