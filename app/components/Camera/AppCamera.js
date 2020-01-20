@@ -81,21 +81,12 @@ export default class AppCamera extends React.Component {
             }
 
             if(rightEyeStates.length === 3) {
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
                     if(initialRightEyeState && !lastRightEyeState && rightEyeState) {
                         this.props.rightAction()
                     }
                 }
 
                 if(leftEyeStates.length === 3) {
-<<<<<<< HEAD
-=======
-
-
->>>>>>> refs/remotes/origin/master
                     if(initialLeftEyeState && !lastLeftEyeState && leftEyeState) {
                         this.props.leftAction()
                     }
@@ -114,13 +105,8 @@ export default class AppCamera extends React.Component {
             return <Text>No access to camera</Text>
         } else {
             return (
-<<<<<<< HEAD
                 <View style={{width: width, height: height - 2050, textAlign: 'center'}}>
                     <Camera style={{flex: 1, height: height - 2050, width: width - 2050}}
-=======
-                <View style={{width: 100, height: 100, textAlign: 'center'}}>
-                    <Camera style={{flex: 1, height: 100, width: 100}}
->>>>>>> refs/remotes/origin/master
                             onFacesDetected={(faces) => this.handleFaces(faces)}
                             faceDetectorSettings={{
                                 mode: FaceDetector.Constants.Mode.accurate,

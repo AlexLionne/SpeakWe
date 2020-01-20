@@ -15,17 +15,10 @@ export default class EMAIL extends React.Component {
     }
     render() {
         return (
-<<<<<<< HEAD
             <AppCamera 
                 blinkAction={() => {console.log('both')}}
                 rightAction={() => {console.log('right')}}
                 leftAction={() => {console.log('left')}}
-=======
-            <AppCamera
-                blinkAction={() => {console.log('both')}}
-                leftAction={() => {console.log('left')}}
-                rightAction={() => {console.log('right')}}
->>>>>>> refs/remotes/origin/master
             >
                 <View style={{width: width, height: height, justifyContent: 'center', display: 'flex'}}>
                     <Slider />
